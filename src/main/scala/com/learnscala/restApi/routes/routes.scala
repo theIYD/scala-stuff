@@ -22,5 +22,23 @@ case class Routes()(implicit cc: castor.Context, log: cask.Logger) extends cask.
     s"The request params are: ${request.queryParams}"
   }
 
+  @cask.route("/json", methods = Seq("get"))
+  def returnJSONObject() = {
+    ujson.Obj(
+      "name" -> "ABC",
+      "type" -> "user",
+      "role" -> "admin"
+    )
+  }
+
+  @cask.postJson("/json")
+  def postJSON(name: String, userType: String, roles: Seq[String]) = {
+    ujson.Obj(
+      "name" -> name,
+      "type" -> userType,
+      "roles" -> roles
+    )
+  }
+
   initialize()
 }
