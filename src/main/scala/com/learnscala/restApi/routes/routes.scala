@@ -11,5 +11,16 @@ case class Routes()(implicit cc: castor.Context, log: cask.Logger) extends cask.
     "one more route"
   }
 
+  @cask.get("/user/:username")
+  def showUserProfile(username: String) = s"The user name is $username"
+
+  @cask.get("/posts/:postId")
+  def showPost(postId: String) = s"The post is $postId"
+
+  @cask.get("/request")
+  def checkRequest(request: cask.Request) = {
+    s"The request params are: ${request.queryParams}"
+  }
+
   initialize()
 }
