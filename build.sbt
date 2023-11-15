@@ -6,3 +6,5 @@ lazy val root = (project in file("."))
   .settings(
     name := "learn-scala"
   )
+
+libraryDependencies += "com.lihaoyi" %% "cask" % "0.9.1"
