@@ -66,5 +66,5 @@ jitwatch.out
 .bloop
 project/**/metals.sbt
 
-.bsp
+.bsp/**/*
 .DS_Store
