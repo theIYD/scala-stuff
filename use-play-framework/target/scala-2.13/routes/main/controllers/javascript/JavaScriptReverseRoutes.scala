@@ -27,29 +27,39 @@ package controllers.javascript {
       """
     )
   
-  }
-
-  // @LINE:10
-  class ReverseTaskListOne(_prefix: => String) {
-
-    def _defaultPrefix: String = {
-      if (_prefix.endsWith("/")) "" else "/"
-    }
-
-  
     // @LINE:10
-    def taskList: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.TaskListOne.taskList",
+    def users: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.users",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "taskListOne"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "users"})
+        }
+      """
+    )
+  
+    // @LINE:11
+    def user: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.user",
+      """
+        function(userId0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "users/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("userId", userId0))})
+        }
+      """
+    )
+  
+    // @LINE:12
+    def add: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.add",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "user"})
         }
       """
     )
   
   }
 
-  // @LINE:13
+  // @LINE:15
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -57,7 +67,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:13
+    // @LINE:15
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
