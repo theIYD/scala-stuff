@@ -6,6 +6,6 @@ import play.api.mvc._
 @Singleton
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
   def index: Action[AnyContent] = Action {
-    Ok("My first Play framework app")
+    Ok(views.html.index())
   }
 }

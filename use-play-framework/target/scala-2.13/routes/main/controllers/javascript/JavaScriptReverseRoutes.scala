@@ -29,7 +29,27 @@ package controllers.javascript {
   
   }
 
-  // @LINE:11
+  // @LINE:10
+  class ReverseTaskListOne(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:10
+    def taskList: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.TaskListOne.taskList",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "taskListOne"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:13
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -37,7 +57,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:11
+    // @LINE:13
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
